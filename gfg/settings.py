@@ -32,7 +32,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!!
-DEBUG = config('DEBUG')
+#DEBUG = config('DEBUG')
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -48,10 +49,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SAMESITE = 'Strict'
+
+SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Strict'
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,7 +66,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_cookies_samesite.middleware.CookiesSameSite',
+#    'django_cookies_samesite.middleware.CookiesSameSite',
 ]
 
 ROOT_URLCONF = 'gfg.urls'
