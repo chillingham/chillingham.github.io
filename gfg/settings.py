@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
+from decouple import config
+
 from pathlib import Path
 from . info import *
 
@@ -26,7 +29,7 @@ EMAIL_PORT = EMAIL_PORT
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&d80z@yqia8tu12-r+_gv+-gd4&7*mwf$a_+ib!7g_q^gza@9i'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
