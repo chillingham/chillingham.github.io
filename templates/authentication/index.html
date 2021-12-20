@@ -250,15 +250,16 @@ input:focus {
         {% endfor %}
         
         <h3>Welcome to AA Group</h3>
-             
+        <div class="login">     
         {% if user.is_authenticated %}
-        <h3>Hello {{ fname }}</h3>
-        <h4>You successfully logged in.</h4>
-        <button type="submit" class="btn btn-primary btn-block btn-large"><a href="/signout">Logout</a></button>
+          <h3>Hello {{ fname }}</h3>
+          <h4>You successfully logged in.</h4>
+          <button type="submit" class="btn btn-primary btn-block btn-large"><a href="/signout">Logout</a></button>
         {% else %}
-        <button type="submit" class="btn btn-primary btn-block btn-large"><a href="/signup"> SignUp</a></button>
-        <button type="submit" class="btn btn-primary btn-block btn-large"><a href="/signin"> Login</a></button>
+          <button type="submit" class="btn btn-primary btn-block btn-large"><a href="/signup"> SignUp</a></button>
+          <p></p>
+          <button type="submit" class="btn btn-primary btn-block btn-large"><a href="/signin"> Login</a></button>
         {% endif %}
-
+        </div>
     </body>
 </html>
