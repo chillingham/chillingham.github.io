@@ -251,20 +251,32 @@ input:focus {
         
         <div class="login">
             <h1>Signup</h1>
-            <form action="/signup" method="post">
+            <form name="signup_form" action="/signup" method="post" onsubmit="return Validate_Form()">
                 {% csrf_token %}
                 <input type="text" id="username" name="username" placeholder="Username" required="required" />
                 <input type="text" id="fname" name="fname" placeholder="First Name" required="required" />
                 <input type="text" id="lname" name="lname" placeholder="Last Name" required="required" />
-                <input type="text" id="email" name="email" placeholder="Email" required="required" />
-
-                <input type="password" id="pass1" name="pass1" placeholder="Password" required="required" />
-                <input type="password" id="pass2" name="pass2" placeholder="Repeat Password" required="required" />
+                
+                <input type="email" id="email" name ="email" placeholder="Email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-.]+\.[a-zA-Z]{2,4}$" required />
+                <input type="password" id="pass1" name="pass1" placeholder="Password" pattern="^[a-zA-Z0-9!$%&*#]{6,16}$" required />
+                <p style="color:yellow;font-size:10px;">Password should have a length between 6 and 20 characters and use the following special characters: !$%&*#</p>
+                <input type="password" id="pass2" name="pass2" placeholder="Repeat Password" pattern="^[a-zA-Z0-9!$%&*#]{6,20}$" required />
                 <button type="submit" class="btn btn-primary btn-block btn-large">Create account</button>
             </form>
             <p>
                 Already have an account? <a href="/signin">Login in here</a>
             </p>
         </div>
+        <script>
+          function Validate_Form() {
+            var pass1 = document.signup_form.pass1.value;
+            var pass2 = document.signup_form.pass2.value;
+            if (pass1 != pass2) {
+              window.alert("Passwords do not match");
+              return false;
+            }
+            return true;
+          }
+        </script>
     </body>
 </html>
