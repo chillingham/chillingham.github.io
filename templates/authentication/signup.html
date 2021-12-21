@@ -253,14 +253,15 @@ input:focus {
             <h1>Signup</h1>
             <form name="signup_form" action="/signup" method="post" onsubmit="return Validate_Form()">
                 {% csrf_token %}
-                <input type="text" id="username" name="username" placeholder="Username" required="required" />
-                <input type="text" id="fname" name="fname" placeholder="First Name" required="required" />
-                <input type="text" id="lname" name="lname" placeholder="Last Name" required="required" />
+                <input type="text" id="username" name="username" placeholder="Username" pattern="^[a-zA-Z0-9]{4,20}$" required />
+                <p style="color:white ;font-size:10px;">Username legth: between 4 and 20 characters.</p>
+                <input type="text" id="fname" name="fname" placeholder="First Name" pattern="^[a-zA-Z]{1,20}$" required />
+                <input type="text" id="lname" name="lname" placeholder="Last Name" pattern="^[a-zA-Z]{1,20}$" required" />
                 
                 <input type="email" id="email" name ="email" placeholder="Email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-.]+\.[a-zA-Z]{2,4}$" required />
                 <input type="password" id="pass1" name="pass1" placeholder="Password" pattern="^[a-zA-Z0-9!$%&*#]{6,16}$" required />
-                <p style="color:yellow;font-size:10px;">Password should have a length between 6 and 20 characters and use the following special characters: !$%&*#</p>
-                <input type="password" id="pass2" name="pass2" placeholder="Repeat Password" pattern="^[a-zA-Z0-9!$%&*#]{6,20}$" required />
+                <p style="color:white;font-size:10px;">Password should have a length between 6 and 16 characters and use the following special characters: !$%&*#</p>
+                <input type="password" id="pass2" name="pass2" placeholder="Repeat Password" pattern="^[a-zA-Z0-9!$%&*#]{6,16}$" required />
                 <button type="submit" class="btn btn-primary btn-block btn-large">Create account</button>
             </form>
             <p>

@@ -255,8 +255,8 @@ input:focus {
 
             <form method="post" action="/signin">
                 {% csrf_token %}
-                <input type="text" id="username" name="username" placeholder="Username" required="required" />
-                <input type="password" id="pass1" name="pass1" placeholder="Password" required="required" />
+                <input type="text" id="username" name="username" placeholder="Username" pattern="^[a-zA-Z0-9]{4,20}$" required />
+                <input type="password" id="pass1" name="pass1" placeholder="Password" pattern="^[a-zA-Z0-9!$%&*#]{6,16}$" required />
                 <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
             </form>
 
